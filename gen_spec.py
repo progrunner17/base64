@@ -16,9 +16,12 @@ def convertToBase64(i):
 
 if __name__ == "__main__":
     with open("SPEC.md", "w") as fp:
-        print('# base64 conversion table',file=fp)
-        print('|10進数|2進数|base64文字|', file=fp)
-        print('|:-|:'+'-'*6 + ':|-|', file=fp)
+        head = '''\
+# base64 conversion table
+| 10進数 |  2進数  | base64文字|
+|:------|:-------:|:--------:|\
+'''
+        print(head, file=fp)
         for i in range(2**6):
-            print('|{:<2}|0b{:<6}|{}|'.format(
+            print('|{:^8}| 0b{:<6} |{:^6}|'.format(
                 i, format(i, '06b'), convertToBase64(i)), file=fp)
